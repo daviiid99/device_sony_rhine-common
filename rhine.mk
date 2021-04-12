@@ -146,14 +146,15 @@ PRODUCT_PACKAGES += \
     timekeep \
     TimeKeep
 
-# NFC
+# NFC   
 PRODUCT_PACKAGES += \
-    android.hardware.nfc@1.0-impl \
+    nfc.qcom
+
+PRODUCT_PACKAGES += \
+  android.hardware.nfc@1.0-impl \
     com.android.nfc_extras \
     nfc.msm8974 \
     libnfc \
-    libnfc_ndef \
-    libnfc_jni \
     Nfc \
     Tag
 
