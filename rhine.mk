@@ -151,6 +151,10 @@ PRODUCT_PACKAGES += \
     Tag \
     com.android.nfc_extras
     nfc.qcom
+    libnfc \
+    libnfc_jni \
+    Nfc \
+    Tag \
 
 # NFCEE access control
 ifeq ($(TARGET_BUILD_VARIANT),user)
