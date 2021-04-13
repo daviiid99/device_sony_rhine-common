@@ -149,7 +149,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.nfc@1.0-service \
     Tag \
-    com.android.nfc_extras
+    com.android.nfc_extras \
     nfc.qcom \
     libnfc \
     libnfc_jni \
