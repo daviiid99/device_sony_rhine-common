@@ -157,7 +157,6 @@ PRODUCT_PACKAGES += \
     libnfc_jni \
     libnfc \
     Nfc \
-    NfcNci \
     Tag
 
 # NFCEE access control
