@@ -161,7 +161,7 @@ PRODUCT_PACKAGES += \
     Tag
 
 # NFCEE access control
-    NFCEE_ACCESS_PATH := $(COMMON_PATH)/rootdir/system/etc/nfcee_access.xml
+NFCEE_ACCESS_PATH := $(COMMON_PATH)/rootdir/system/etc/nfcee_access_debug.xml
 
 PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):$(TARGET_COPY_OUT_VENDOR)/etc/nfcee_access.xml
