@@ -94,7 +94,7 @@ PRODUCT_PACKAGES += \
     libshim_cald \
     libc_util \
     libshim_camera
-    camera.msm8974
+    camera.msm8974 \
 
 # Music FX
 PRODUCT_PACKAGES += \
