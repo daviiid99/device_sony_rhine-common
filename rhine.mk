@@ -147,15 +147,14 @@ PRODUCT_PACKAGES += \
 
 # NFC   
 PRODUCT_PACKAGES += \
-    android.hardware.nfc@1.0-service \
-    Tag \
+    android.hardware.nfc@1.0-impl \
     com.android.nfc_extras \
-    nfc.qcom \
+    nfc.msm8974 \
     libnfc \
+    libnfc_ndef \
     libnfc_jni \
     Nfc \
-    NfcNci \
-    Tag \
+    Tag
 
 # NFCEE access control
 ifeq ($(TARGET_BUILD_VARIANT),user)
