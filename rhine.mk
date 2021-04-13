@@ -93,8 +93,8 @@ PRODUCT_PACKAGES += \
     wait4tad_static \
     libshim_cald \
     libc_util \
-    libshim_camera
-    camera.msm8974 \
+    libshim_camera \
+    camera.msm8974 
 
 # Music FX
 PRODUCT_PACKAGES += \
