@@ -151,6 +151,7 @@ PRODUCT_PACKAGES += \
 # NFC
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
+    Nfc \
     NfcNci \
     Tag
 
