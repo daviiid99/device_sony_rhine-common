@@ -87,6 +87,11 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
+ tad_static \
+    wait4tad_static \
+    libshim_cald \
+    libc_util \
+    libshim_camera \
     camera.msm8974 
     
 # Recorder
@@ -149,12 +154,20 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
     NfcNci \
-    Tag
+    Tag \
+    nfc.msm8974 \
+    libnfc_jni \
+    libnfc \
+    Nfc \
+    android.hardware.nfc@1.0-impl \
+    nfc.qcom
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf \
     $(LOCAL_PATH)/configs/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf
-
+    $(COMMON_PATH)/rootdir/system/etc/nfcee_access_debug.xml   
+    $(NFCEE_ACCESS_PATH):$(TARGET_COPY_OUT_VENDOR)/etc/nfcee_access.xml
+    
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.xml \
