@@ -19,9 +19,10 @@ $(call inherit-product, device/sony/msm8974-common/msm8974.mk)
 
 COMMON_PATH := device/sony/rhine-common
 
-DEVICE_PACKAGE_OVERLAYS += 
-$(COMMON_PATH)/overlay \
- $(LOCAL_PATH)/overlay-lineage
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay \
+    $(LOCAL_PATH)/overlay-lineage
   
 PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
