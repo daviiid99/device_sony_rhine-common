@@ -146,10 +146,17 @@ PRODUCT_PACKAGES += \
     timekeep \
     TimeKeep
 
-# NFC
+# NFC   
 PRODUCT_PACKAGES += \
+    nfc.qcom
+    
+PRODUCT_PACKAGES += \
+  android.hardware.nfc@1.0-impl \
     com.android.nfc_extras \
-    NfcNci \
+    nfc.msm8974 \
+    libnfc_jni \
+    libnfc \
+    Nfc \
     Tag
 
 # NFCEE access control
