@@ -165,7 +165,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf \
     $(LOCAL_PATH)/configs/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf
-    $(COMMON_PATH)/rootdir/system/etc/nfcee_access_debug.xml   
+    
+    PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/rootdir/system/etc/nfcee_access_debug.xml \
     $(NFCEE_ACCESS_PATH):$(TARGET_COPY_OUT_VENDOR)/etc/nfcee_access.xml
     
 # Permissions
