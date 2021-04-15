@@ -19,15 +19,7 @@ $(call inherit-product, device/sony/msm8974-common/msm8974.mk)
 
 COMMON_PATH := device/sony/rhine-common
 
-# Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
-  
-PRODUCT_ENFORCE_RRO_TARGETS := *
-PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
-	$(LOCAL_PATH)/overlay-lineage/lineage-sdk \
-	$(LOCAL_PATH)/overlay/packages/apps/Snap
+DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -36,6 +28,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.gps.xml \
+    frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.xml \
     frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.nxp.mifare.xml \
     frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.gyroscope.xml \
     frameworks/native/data/etc/android.hardware.sensor.light.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.light.xml \
@@ -48,6 +41,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml \
+    frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.google.android.nfc_extras.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth_le.xml
 
 PRODUCT_COPY_FILES += \
@@ -64,35 +58,22 @@ PRODUCT_PACKAGES += \
     libantradio
 
 # Audio configuration
-
-# Audio
-PRODUCT_PACKAGES += \
-    android.hardware.audio@2.0-impl \
-    android.hardware.audio@2.0-service \
-    android.hardware.audio.effect@2.0-impl \
-    android.hardware.audio.effect@2.0-service \
-    audio.a2dp.default \
-    audio.primary.msm8974 \
-    audio.r_submix.default \
-    audio.usb.default \
-    libaudio-resampler \
-    libqcompostprocbundle \
-    libqcomvisualizer \
-    libqcomvoiceprocessing \
-    libqcomvoiceprocessingdescriptors
-
-
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/audio/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
-    $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
-    $(LOCAL_PATH)/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
-    
+    $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml
+
 PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:system/vendor/etc/a2dp_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/a2dp_in_audio_policy_configuration.xml:system/vendor/etc/a2dp_in_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/audio_policy_configuration_bluetooth_legacy_hal.xml:system/vendor/etc/audio_policy_configuration_bluetooth_legacy_hal.xml \
+    frameworks/av/services/audiopolicy/config/audio_policy_configuration_generic.xml:system/vendor/etc/audio_policy_configuration_generic.xml    \
+    frameworks/av/services/audiopolicy/config/audio_policy_configuration_generic_configurable.xml:system/vendor/etc/audio_policy_configuration_generic_configurable.xml \
+    frameworks/av/services/audiopolicy/config/primary_audio_policy_configuration.xml:system/vendor/etc/primary_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:system/vendor/etc/audio_policy_volumes.xml \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:system/vendor/etc/default_volume_tables.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:system/vendor/etc/r_submix_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/surround_sound_configuration_5_0.xml:system/vendor/etc/surround_sound_configuration_5_0.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:system/vendor/etc/usb_audio_policy_configuration.xml
+
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -113,16 +94,12 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.4-impl-legacy \
-    camera.device@1.0-impl-legacy \
-    Snap \
-    camera.msm8974 \
-    libshim_atomic \
-    libshim_camera_parameters
-    
-# Browser package
-PRODUCT_PACKAGES += \
-    Jelly
+    tad_static \
+    wait4tad_static \
+    libshim_cald \
+    libc_util \
+    libshim_camera \
+    camera.msm8974 
 
 # Launcher packages
 PRODUCT_PACKAGES += \
@@ -188,30 +165,29 @@ PRODUCT_PACKAGES += \
     timekeep \
     TimeKeep
 
-# NFC
+# NFC   
 PRODUCT_PACKAGES += \
+    nfc.qcom
+    
+PRODUCT_PACKAGES += \
+  android.hardware.nfc@1.0-impl \
     com.android.nfc_extras \
-    NfcNci \
-    Tag \
+    com.gsma.services.nfc \
+    nqnfcee_access.xml \
     nfc.msm8974 \
     libnfc_jni \
+    nqnfcse_access.xml \
     libnfc \
+    NQNfcNci \
     Nfc \
-    android.hardware.nfc@1.0-impl \
-    nfc.qcom
-  
-# NFCEE access control
-NFCEE_ACCESS_PATH := $(COMMON_PATH)/rootdir/system/etc/nfcee_access_debug.xml
+    Tag \
+    vendor.nxp.hardware.nfc@2.0-service
 
+# NFCEE access control
+ NFCEE_ACCESS_PATH := $(COMMON_PATH)/rootdir/system/etc/nfcee_access.xml
 
 PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):$(TARGET_COPY_OUT_VENDOR)/etc/nfcee_access.xml
-
-    
-# Permissions
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.xml \
-    frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.android.nfc_extras.xml
 
 # VNDK
 PRODUCT_COPY_FILES += \
