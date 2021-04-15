@@ -120,7 +120,17 @@ PRODUCT_PACKAGES += \
     libshim_atomic \
     libshim_camera_parameters
     
-# Recorder
+# Browser package
+PRODUCT_PACKAGES += \
+    Jelly
+
+# Launcher packages
+
+# Music packages
+PRODUCT_PACKAGES += \
+    Eleven
+
+# Recorder packages
 PRODUCT_PACKAGES += \
     Recorder
 
