@@ -125,6 +125,8 @@ PRODUCT_PACKAGES += \
     Jelly
 
 # Launcher packages
+PRODUCT_PACKAGES += \
+TrebuchetQuickStepGo
 
 # Music packages
 PRODUCT_PACKAGES += \
