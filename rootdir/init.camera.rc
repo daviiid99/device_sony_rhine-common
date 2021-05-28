@@ -82,6 +82,11 @@ service credmgrd /system/vendor/bin/credmgrd
     group system camera media
     socket credmgr stream 0660 system camera
     disabled
+    
+service suntrold-sh /vendor/bin/suntrold.sh
+    class main
+    user system
+    group system camera
 
 # Secure Config Transfer service
 service sct_service /system/vendor/bin/sct_service
