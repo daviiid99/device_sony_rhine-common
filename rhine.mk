@@ -102,10 +102,6 @@ PRODUCT_PACKAGES += \
     libshim_camera \
     camera.msm8974 
 
-# Launcher packages
-PRODUCT_PACKAGES += \
-TrebuchetQuickStepGo
-
 # Music packages
 PRODUCT_PACKAGES += \
     Eleven
