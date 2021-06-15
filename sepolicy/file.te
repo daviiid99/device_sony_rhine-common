@@ -1,7 +1,3 @@
-# SCT
-type sct, domain;
-type sct_exec, exec_type, file_type;
-
 # sysfs
 type sysfs_input, fs_type, sysfs_type;
 
