@@ -1,10 +1,3 @@
-# Credential manager
-type credmgrd, domain;
-type credmgrd_exec, exec_type, file_type;
-type credmgrd_data_file, file_type, data_file_type, core_data_file_type;
-type credmgrd_socket, file_type;
-type credmgrd_firmware, file_type;
-
 # SCT
 type sct, domain;
 type sct_exec, exec_type, file_type;
