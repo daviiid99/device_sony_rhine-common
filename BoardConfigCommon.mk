@@ -33,7 +33,6 @@ BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/zImage
 TARGET_PREBUILT_DT := $(DEVICE_PATH)/prebuilt/dt.img
 BOARD_MKBOOTIMG_ARGS  := --ramdisk_offset 0x02000000 --tags_offset 0x01E00000
-BOARD_KERNEL_SEPARATED_DT := true
 
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-smd"
