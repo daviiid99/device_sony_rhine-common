@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
+DEVICE_PATH := device/sony/honami
+
 # inherit from msm8974-common
 include device/sony/msm8974-common/BoardConfigCommon.mk
 
